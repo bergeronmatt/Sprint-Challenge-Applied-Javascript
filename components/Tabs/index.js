@@ -28,7 +28,7 @@ axios.get("https://lambda-times-backend.herokuapp.com/topics")
 
 // Function to iterate over topics creating new Tab components
 
-function Tab (obj){
+function Tab (topics){
 
     //create elements
 
@@ -40,7 +40,7 @@ function Tab (obj){
 
     //set text content
 
-    tab.textContent = obj.topics;
+    tab.textContent = topics;
 
     return tab;
 }
