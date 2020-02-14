@@ -8,11 +8,18 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
+const topicList = document.querySelector('.topics')
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
 .then(response => {
     console.log("this is the response for tabs: ")
     console.log(response)
+
+    response.data.topics.forEach(p => {
+        topicList.append(Tab(p));
+    })
+
+
 })
 .catch(err => {
     console.log(`The data was not returned ${err}`);
@@ -21,19 +28,19 @@ axios.get("https://lambda-times-backend.herokuapp.com/topics")
 
 // Function to iterate over topics creating new Tab components
 
-function Tab (){
+function Tab (obj){
 
-    //define elements
+    //create elements
+
     const tab = document.createElement('div');
-
-    
-    //set up the structure of the elements
-
-    
 
     //add classes to the elements
 
+    tab.classList.add('tab');
 
-    //set content of the elements
+    //set text content
 
+    tab.textContent = obj.topics;
+
+    return tab;
 }
