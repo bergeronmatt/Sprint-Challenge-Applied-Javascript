@@ -23,10 +23,9 @@ const cards = document.querySelector('.cards-container')
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
 .then(response => {
     console.log("This is the response for cards: ")
-    console.log(response.data.articles.javascript)
-
-
-    cards.append(createCard(response.data.articles.javascript))
+    response.data.articles.javascript.forEach(p => {
+        cards.append(createCard(p));
+    })
 })
 .catch(err => {
     
@@ -53,7 +52,7 @@ function createCard(obj){
     //set text content
 
     headline.textContent = obj.headline;
-    img.src = obj.authorPhoto;
+    img.src = obj.authorName;
     button.textContent = obj.authorName;
 
     //set up structure of our elements
